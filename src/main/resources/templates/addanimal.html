@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<h1>Add A PET</h1>
+
+<form action="/saveanimal" th:object="${anAnimal}" method="post">
+
+    <input type="hidden" th:field="*{id}">
+
+    <label for="type">Type of Pet: </label>  <input type="text" th:field="*{type}">
+
+    <label for="name">Name of Pet: </label> <input type="text" th:field="*{name}">
+
+    <label for="description">Description of Pet: </label>   <input type="text" th:field="*{description}">
+
+    <label for="image"> Insert Image Link: </label> <input type="text" th:field="*{image}">
+
+    <button type="submit">Save Pet</button>
+
+</form>
+</body>
+</html>

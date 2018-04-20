@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<a href="/add">Add a Pet</a>
+<div th:each="anAnimal:${animals}">
+    <span th:text="${anAnimal.type}"></span>
+    <span th:text="${anAnimal.name}"></span>
+    <span th:text="${anAnimal.description}"></span>
+    <img th:src="${anAnimal.image}" alt="${anAnimal.type}+' '+${anAnimal.name}">
+    <span>
+        <p th:text="${e}"
+        <a th:href="@{/update/{id}(id=${anAnimal.id})}">Update</a>
+    </span>
+</div>
+</body>
+</html>
