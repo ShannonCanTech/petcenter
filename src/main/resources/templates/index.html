@@ -6,15 +6,36 @@
 </head>
 <body>
 <a href="/add">Add a Pet</a>
-<div th:each="anAnimal:${animals}">
+<!--<div th:each="anAnimal:${animals}">
     <span th:text="${anAnimal.type}"></span>
     <span th:text="${anAnimal.name}"></span>
     <span th:text="${anAnimal.description}"></span>
     <img th:src="${anAnimal.image}" alt="${anAnimal.type}+' '+${anAnimal.name}">
     <span>
-        <p th:text="${e}"
         <a th:href="@{/update/{id}(id=${anAnimal.id})}">Update</a>
     </span>
+</div>-->
+
+<div th:each="eachAnimal:${animals}">
+
+    <p th:text="${eachAnimal.type}"></p>
+    <p th:text="${eachAnimal.name}"></p>
+    <p th:text="${eachAnimal.description}"></p>
+    <img th:src="${eachAnimal.image}">
+
+    <!--if else statement used to determine if cat is either lost or found-->
+    <div th:if="${eachAnimal.lost}">
+        <div th:text="'Lost'"></div>
+    </div>
+    <div th:unless="${eachAnimal.found}">
+        <div th:text="'Found'"></div>
+    </div>
+<!--    <p th:text="${eachAnimal.lost}?'Lost'"></p>
+    <p th:text="${eachAnimal.found}?'Found'"></p>-->
+
+    <a th:href="@{/update/{id}(id=${eachAnimal.id})}">Update Pet Details</a>
+    <a th:text="${eachAnimal.lost}?'Report Found':'Report Lost'" th:href="@{/changestatus/{id}(id=${eachAnimal.id})}"></a>
+
 </div>
 </body>
 </html>
