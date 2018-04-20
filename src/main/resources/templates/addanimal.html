@@ -10,23 +10,26 @@
 <body>
 <h1>Add A PET</h1>
 
-<form action="/saveanimal" th:object="${anAnimal}" method="post">
+<div class="container">
+    <div class="section">
+        <form action="/saveanimal" th:object="${anAnimal}" method="post">
 
-    <input type="hidden" th:field="*{id}">
+            <input type="hidden" th:field="*{id}">
 
-    <label for="type">Type of Pet: </label>  <input type="text" th:field="*{type}" required>
+            <label for="type">Type of Pet: </label>  <input type="text" th:field="*{type}" required>
 
-    <label for="name">Name of Pet: </label> <input type="text" th:field="*{name}">
+            <label for="name">Name of Pet: </label> <input type="text" th:field="*{name}">
 
-    <label for="description">Description of Pet: </label>   <input type="text" th:field="*{description}">
+            <label for="description">Description of Pet: </label>   <input type="text" th:field="*{description}">
 
-    <label for="image"> Insert Image Link: </label> <input type="text" th:field="*{image}">
+            <label for="image"> Insert Image Link: </label> <input type="text" th:field="*{image}">
 
 
-    <button type="submit">Save Pet</button>
+            <button type="submit">Save Pet</button>
 
-</form>
-
+        </form>
+    </div>
+</div>
 <!--Bootstrap 4 Default JS-->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>

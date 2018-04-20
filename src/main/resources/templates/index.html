@@ -6,55 +6,86 @@
 
     <!--Bootstrap 4 Default CSS-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!-- Custom Fonts -->
+    <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="/vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+
+    <link href="/css/stylish-portfolio.min.css" rel="stylesheet">
+    <link href="/css/styles.css" rel="stylesheet">
 </head>
 <body>
 
 <a class="menu-toggle rounded" href="#">
     <i class="fa fa-bars"></i>
 </a>
-<nav id="side-wrapper">
+<nav id="sidebar-wrapper">
     <ul class="sidebar-nav">
         <li class="sidebar-brand">
             <a class="js-scroll-trigger" href="#pag-top">Pet Community Center</a>
         </li>
         <li class="sidebar-nav-item">
-            <a class="js-scroll-trigger" href="/a"
+            <a class="js-scroll-trigger" href="#page-top">Home</a>
+        </li>
+        <li class="sidebar-nav-item">
+            <a class="js-scroll-trigger" href="/add">Add A Pet</a>
+        </li>
+        <li class="sidebar-nav-item">
+            <a class="js-scroll-trigger" href="#">List of Pets</a>
         </li>
     </ul>
 </nav>
 
 <header class="bg-image d-flex">
-
+        <div class="container text-center my-auto">
+            <h1 class="white">Find Lost &amp; Found Pets</h1>
+            <h3 class="white">Get Started Today!</h3>
+            <a class="btn btn-primary btn-xl"href="/add">Add a Pet</a>
+            <a class="btn btn-primary btn-xl"href="#seeanimals">See Animals</a>
+        </div>
 </header>
-<a href="/add">Add a Pet</a>
 
-<div th:each="eachAnimal:${animals}">
+<div class="container">
+    <div class="section" id="seeanimals">
+        <div th:each="eachAnimal:${animals}">
 
-    <p th:text="${eachAnimal.type}"></p>
-    <p th:text="${eachAnimal.name}"></p>
-    <p th:text="${eachAnimal.description}"></p>
+            <p th:text="${eachAnimal.type}"></p>
+            <p th:text="${eachAnimal.name}"></p>
+            <p th:text="${eachAnimal.description}"></p>
 
-    <!--if else statement used to determine if cat is either lost or found-->
-    <div th:if="${eachAnimal.lost}">
-        <div th:text="'Lost'"></div>
+            <!--if else statement used to determine if cat is either lost or found-->
+            <div th:if="${eachAnimal.lost}">
+                <div th:text="'Lost'"></div>
+            </div>
+            <div th:unless="${eachAnimal.found}">
+                <div th:text="'Found'"></div>
+            </div>
+
+            <!--Add alt statement in case image inserted isn't actually an image.-->
+            <!--Removed th:onerror="@{/img/default-image.jfif}-->
+            <img th:src="${eachAnimal.image}" alt="${eachAnimal.type}+' '+${eachAnimal.name}" class="img-thumbnail" onerror="if (this.src != '/img/default-image.jfif') this.src='/img/default-image.jfif';">
+
+
+            <a class="btn btn-primary btn-xl" th:href="@{/update/{id}(id=${eachAnimal.id})}">Update Pet Details</a>
+            <a class="btn btn-primary btn-xl" th:text="${eachAnimal.found}?'Report Found':'Report Lost'" th:href="@{/changestatus/{id}(id=${eachAnimal.id})}"></a>
+
+        </div>
     </div>
-    <div th:unless="${eachAnimal.found}">
-        <div th:text="'Found'"></div>
-    </div>
-
-    <!--Add alt statement in case image inserted isn't actually an image.-->
-    <!--Removed th:onerror="@{/img/default-image.jfif}-->
-    <img th:src="${eachAnimal.image}" alt="${eachAnimal.type}+' '+${eachAnimal.name}" class="img-thumbnail" onerror="if (this.src != '/img/default-image.jfif') this.src='/img/default-image.jfif';">
-
-
-    <a th:href="@{/update/{id}(id=${eachAnimal.id})}">Update Pet Details</a>
-    <a th:text="${eachAnimal.found}?'Report Found':'Report Lost'" th:href="@{/changestatus/{id}(id=${eachAnimal.id})}"></a>
-
 </div>
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded js-scroll-trigger" href="#page-top">
+    <i class="fa fa-angle-up"></i>
+</a>
 
 <!--Bootstrap 4 Default JS-->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+<!-- Plugin JavaScript -->
+<script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for this template -->
+<script src="/js/stylish-portfolio.min.js"></script>
 </body>
 </html>
