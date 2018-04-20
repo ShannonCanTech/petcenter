@@ -48,8 +48,6 @@ public class MainController {
     public String lostFound(@PathVariable("id") long id)
     {
         Animal thisAnimal = animalRepo.findById(id).get();
-
-//        If elseif???
         thisAnimal.setLost(!thisAnimal.isLost());
         thisAnimal.setFound(!thisAnimal.isFound());
         animalRepo.save(thisAnimal);
@@ -59,7 +57,7 @@ public class MainController {
     @RequestMapping("/update/{id}")
     public String updateAnimal(@PathVariable("id") long id, Model model)
     {
-        model.addAttribute("anAnimal", animalRepo.findById(id));
+        model.addAttribute("anAnimal", animalRepo.findById(id).get());
         return "addanimal";
     }
 }

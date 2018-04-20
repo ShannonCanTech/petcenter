@@ -83,4 +83,5 @@ public class Animal {
     public void setFound(boolean found) {
         this.found = found;
     }
+
 }
