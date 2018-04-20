@@ -21,7 +21,8 @@
     <p th:text="${eachAnimal.type}"></p>
     <p th:text="${eachAnimal.name}"></p>
     <p th:text="${eachAnimal.description}"></p>
-    <img th:src="${eachAnimal.image}">
+    <!--Add alt statement in case image inserted isn't actually an image.-->
+    <img th:src="${eachAnimal.image}" alt="${eachAnimal.type}+' '+${eachAnimal.name}">
 
     <!--if else statement used to determine if cat is either lost or found-->
     <div th:if="${eachAnimal.lost}">
