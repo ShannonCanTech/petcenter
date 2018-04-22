@@ -1,4 +1,4 @@
-.bg-image {
+/*.bg-image {
     min-height: 60rem;
     position: relative;
     display: table;
@@ -10,9 +10,27 @@
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
+}*/
+
+.slide-1 {
+    background-image: url("../img/bg-image-1.jpeg");
+    /*position: relative;*/
+    /*width: 100%;*/
 }
 
-.bg-image h1 {
+.slide-2 {
+    background-image: url("../img/bg-image-2.jpeg");
+    /*position: relative;*/
+    /*width: 100%;*/
+}
+
+.slide-3 {
+    background-image: url("../img/bg-image-3.jpeg");
+/*    position: relative;
+    width: 100%;*/
+}
+
+.slide-style h1 {
     font-size: 4rem;
     margin: 0;
     padding:0;
